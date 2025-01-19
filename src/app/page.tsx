@@ -1,3 +1,4 @@
+import Alumni from '@/components/Alumni';
 import Carousel from '@/components/Carousel'
 import MessageFromPrincipal from '@/components/MessageFromPrincipal';
 import Numbers from '@/components/Numbers';
@@ -25,6 +26,7 @@ export default function Home() {
       </div>
       <MessageFromPrincipal />
       <Numbers />
+      {/* <Alumni /> */}
     </div>
 
   );
