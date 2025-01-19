@@ -83,9 +83,9 @@ export const Navbar = () => {
                                     About Us
                                 </Link>
                                 <Link href='/notice' onClick={() => setIsNavOpen(false)} 
-                                    className={`${pathname === '/notice' ? 'text-blue-600' : 'text-gray-700'} 
+                                    className={`${pathname === '/notices' ? 'text-blue-600' : 'text-gray-700'} 
                                     transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-600`}>
-                                    Notice
+                                    Notices
                                 </Link>
                                 <Link href='/gallery' onClick={() => setIsNavOpen(false)} 
                                     className={`${pathname === '/gallery' ? 'text-blue-600' : 'text-gray-700'} 
