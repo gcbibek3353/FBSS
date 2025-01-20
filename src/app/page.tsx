@@ -1,5 +1,6 @@
 import Alumni from '@/components/Alumni';
 import Carousel from '@/components/Carousel'
+import Facilities from '@/components/Facilities';
 import MessageFromPrincipal from '@/components/MessageFromPrincipal';
 import Numbers from '@/components/Numbers';
 import { Newspaper } from 'lucide-react';
@@ -26,6 +27,7 @@ export default function Home() {
       </div>
       <MessageFromPrincipal />
       <Numbers />
+      <Facilities />
       {/* <Alumni /> */}
     </div>
 

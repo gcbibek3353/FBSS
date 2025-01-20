@@ -30,7 +30,7 @@ export const Navbar = () => {
                         <ul className='flex gap-8 text-base font-semibold'>
                             <Link href='/' className={`${pathname === '/' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-700'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-blue-600 hover:border-b-2 hover:border-blue-600`}>Home</Link>
                             <Link href='/about' className={`${pathname === '/about' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-700'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-blue-600 hover:border-b-2 hover:border-blue-600`}>About Us</Link>
-                            <Link href='/notice' className={`${pathname === '/notice' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-700'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-blue-600 hover:border-b-2 hover:border-blue-600`}>Notice</Link>
+                            <Link href='/notices' className={`${pathname === '/notices' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-700'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-blue-600 hover:border-b-2 hover:border-blue-600`}>Notices</Link>
                             <Link href='/gallery' className={`${pathname === '/gallery' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-700'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-blue-600 hover:border-b-2 hover:border-blue-600`}>Gallery</Link>
                             <Link href='/contact' className={`${pathname === '/contact' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-700'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-blue-600 hover:border-b-2 hover:border-blue-600`}>Contact Us</Link>
                         </ul>
@@ -82,7 +82,7 @@ export const Navbar = () => {
                                     transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-600`}>
                                     About Us
                                 </Link>
-                                <Link href='/notice' onClick={() => setIsNavOpen(false)} 
+                                <Link href='/notices' onClick={() => setIsNavOpen(false)} 
                                     className={`${pathname === '/notices' ? 'text-blue-600' : 'text-gray-700'} 
                                     transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-600`}>
                                     Notices

@@ -8,7 +8,7 @@ const MessageFromPrincipal = () => {
           {/* Principal Message Section */}
           <h2 className='text-3xl font-bold mb-8'>Message From Principal</h2>
           
-          <div className='grid md:grid-cols-[600px_1fr] gap-8'>
+          <div className='grid lg:grid-cols-[600px_1fr] gap-8'>
             {/* Principal Image */}
             <div className='w-full'>
               <Image
