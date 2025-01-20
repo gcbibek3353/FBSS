@@ -27,8 +27,8 @@ export default function Home() {
       </div>
       <MessageFromPrincipal />
       <Numbers />
+      <Alumni />
       <Facilities />
-      {/* <Alumni /> */}
     </div>
 
   );

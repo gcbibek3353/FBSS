@@ -1,127 +1,128 @@
 "use client"
-import React, { useState } from 'react';
+import {
+  Carousel,
+  CarouselApi,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
+import React, { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-// import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from "./ui/card";
+import Image from "next/image";
 
 const Alumni = () => {
-  const alumni = [
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+
+  const alumniData = [
     {
-      id: 1,
-      name: 'John Doe',
-      achievement: 'Gold Medalist at TU',
-      description: 'Successfully secured gold medal at TU engineering campus.',
-      subtitle: 'Proud Alumni of Future Brighter Secondary School.'
+      name: "Sarah Johnson",
+      year: "2020",
+      achievement: "Software Engineer at Google",
+      image: "/assets/images/image.png",
     },
     {
-      id: 2,
-      name: 'John Doe',
-      achievement: 'Gold Medalist at TU',
-      description: 'Successfully secured gold medal at TU engineering campus.',
-      subtitle: 'Proud Alumni of Future Brighter Secondary School.'
+      name: "Michael Chen",
+      year: "2019",
+      achievement: "Founded Tech Startup",
+      image: "/assets/images/image.png",
     },
     {
-      id: 3,
-      name: 'John Doe',
-      achievement: 'Gold Medalist at TU',
-      description: 'Successfully secured gold medal at TU engineering campus.',
-      subtitle: 'Proud Alumni of Future Brighter Secondary School.'
+      name: "Emily Rodriguez",
+      year: "2021",
+      achievement: "AI Researcher at MIT",
+      image: "/assets/images/image.png",
     },
     {
-      id: 4,
-      name: 'John Doe',
-      achievement: 'Gold Medalist at TU',
-      description: 'Successfully secured gold medal at TU engineering campus.',
-      subtitle: 'Proud Alumni of Future Brighter Secondary School.'
+      name: "David Kim",
+      year: "2018",
+      achievement: "Senior Data Scientist at Amazon",
+      image: "/assets/images/image.png",
     },
     {
-      id: 5,
-      name: 'John Doe',
-      achievement: 'Gold Medalist at TU',
-      description: 'Successfully secured gold medal at TU engineering campus.',
-      subtitle: 'Proud Alumni of Future Brighter Secondary School.'
+      name: "Lisa Patel",
+      year: "2020",
+      achievement: "Product Manager at Microsoft",
+      image: "/assets/images/image.png",
     },
     {
-      id: 6,
-      name: 'John Doe',
-      achievement: 'Gold Medalist at TU',
-      description: 'Successfully secured gold medal at TU engineering campus.',
-      subtitle: 'Proud Alumni of Future Brighter Secondary School.'
+      name: "James Wilson",
+      year: "2019",
+      achievement: "PhD Candidate in Computer Science",
+      image: "/assets/images/image.png",
+    },
+  ]
+
+  useEffect(() => {
+    if (!api) {
+      return
     }
-  ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap())
+    })
+  }, [api])
 
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 3 : prevIndex));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => 
-      (prevIndex + 3 < alumni.length ? prevIndex + 3 : prevIndex)
-    );
-  };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-8 bg-[E6EDF8]">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold mb-4">Our Alumni's</h2>
-        <p className="text-gray-600 max-w-3xl mx-auto">
-          Empowering connections and celebrating achievements, our alumni are the pride and legacy of Future Brighter Secondary School, Baglung.
-        </p>
-      </div>
-
-      <div className="relative">
-        <div className="flex gap-6 items-stretch overflow-hidden">
-          <div 
-            className="flex gap-6 transition-transform duration-300 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
-          >
-            {alumni.map((alum) => (
-              <div key={alum.id} className="w-full min-w-[calc(33.333%-1rem)] flex-shrink-0 bg-white rounded-lg shadow">
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-4">{alum.achievement}</h3>
-                  <p className="text-gray-600 mb-4">{alum.description}</p>
-                  <p className="text-gray-600 mb-6">{alum.subtitle}</p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden">
-                      <img 
-                        src="/api/placeholder/48/48"
-                        alt={`${alum.name}'s photo`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <span className="font-medium">{alum.name}</span>
+    <div className="w-screen bg-white flex items-center justify-center p-4 sm:p-6 lg:p-8">
+    <div className="w-full max-w-screen-xl">
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        plugins={[
+          Autoplay({
+            delay: 4000,
+          }),
+        ]}
+        setApi={setApi}
+        className="w-full"
+      >
+        <CarouselContent className="flex gap-4">
+          {alumniData.map((alumni, index) => (
+            <CarouselItem key={index} className="basis-full md:basis-1/3 lg:basis-1/3">
+              <Card className="overflow-hidden border rounded-lg shadow-md">
+                <CardContent className="p-0">
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <Image
+                      src={alumni.image || "/placeholder.svg"}
+                      alt={`${alumni.name}'s photo`}
+                      fill
+                      className="object-cover transition-transform hover:scale-105 duration-300"
+                    />
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                  <div className="p-4 space-y-2">
+                    <h3 className="font-semibold text-lg">{alumni.name}</h3>
+                    <div className="flex items-center justify-between text-sm text-gray-500">
+                      <span>Class of {alumni.year}</span>
+                      <span className="inline-flex items-center rounded-full bg-blue-100 px-2 py-1 text-xs text-blue-600">
+                        Alumni
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-500">{alumni.achievement}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className="flex items-center justify-center gap-2 mt-4">
+          <CarouselPrevious />
+          <span className="text-sm text-gray-500">
+            {current + 1} / {alumniData.length}
+          </span>
+          <CarouselNext />
         </div>
-        
-        <button 
-          onClick={handlePrevious}
-          disabled={currentIndex === 0}
-          className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-lg ${
-            currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50'
-          }`}
-          aria-label="Previous slide"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        
-        <button 
-          onClick={handleNext}
-          disabled={currentIndex + 3 >= alumni.length}
-          className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-lg ${
-            currentIndex + 3 >= alumni.length ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50'
-          }`}
-          aria-label="Next slide"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
-      </div>
+      </Carousel>
     </div>
-  );
+  </div>
+  
+  )
 };
 
 export default Alumni;
