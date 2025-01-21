@@ -10,8 +10,8 @@ export const Navbar = () => {
     const [isNavOpen,setIsNavOpen] = useState(false);
 
     return (
-        <div className='bg-white shadow-md sticky w-full top-0 left-0 z-50'>
-            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4'>
+        <div className='bg-blue-600 shadow-md sticky w-full top-0 left-0 z-50'>
+            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2'>
                 <div className='flex justify-between items-center md:grid md:grid-cols-[25%_auto]'>
                     {/* Logo Section */}
                     <div className='flex items-center'>
@@ -28,11 +28,11 @@ export const Navbar = () => {
                     {/* Desktop Navigation */}
                     <div className='hidden md:flex items-center justify-center'>
                         <ul className='flex gap-8 text-base font-semibold'>
-                            <Link href='/' className={`${pathname === '/' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-700'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-blue-600 hover:border-b-2 hover:border-blue-600`}>Home</Link>
-                            <Link href='/about' className={`${pathname === '/about' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-700'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-blue-600 hover:border-b-2 hover:border-blue-600`}>About Us</Link>
-                            <Link href='/notices' className={`${pathname === '/notices' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-700'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-blue-600 hover:border-b-2 hover:border-blue-600`}>Notices</Link>
-                            <Link href='/gallery' className={`${pathname === '/gallery' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-700'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-blue-600 hover:border-b-2 hover:border-blue-600`}>Gallery</Link>
-                            <Link href='/contact' className={`${pathname === '/contact' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-700'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-blue-600 hover:border-b-2 hover:border-blue-600`}>Contact Us</Link>
+                            <Link href='/' className={`${pathname === '/' ? 'text-white border-b-2 border-white' : 'text-white'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-white hover:-translate-y-2 hover:border-white`}>Home</Link>
+                            <Link href='/about' className={`${pathname === '/about' ? 'text-white border-b-2 border-white' : 'text-white'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-white hover:-translate-y-2 hover:border-white`}>About Us</Link>
+                            <Link href='/notices' className={`${pathname === '/notices' ? 'text-white border-b-2 border-white' : 'text-white'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-white hover:-translate-y-2 hover:border-white`}>Notices</Link>
+                            <Link href='/gallery' className={`${pathname === '/gallery' ? 'text-white border-b-2 border-white' : 'text-white'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-white hover:-translate-y-2 hover:border-white`}>Gallery</Link>
+                            <Link href='/contact' className={`${pathname === '/contact' ? 'text-white border-b-2 border-white' : 'text-white'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-white hover:-translate-y-2 hover:border-white`}>Contact Us</Link>
                         </ul>
                     </div>
     
