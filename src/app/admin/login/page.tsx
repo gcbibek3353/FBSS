@@ -1,24 +1,27 @@
 'use client'
-import { useRouter } from 'next/navigation';
+import { redirect} from 'next/navigation';
 import React, { useState } from 'react'
+import { toast } from 'sonner';
+import loginAction from '@/actions/auth';
 
 const page = () => {
   const [loading,setLoading] = useState(false);
   const [userName,setUserName] = useState('');
   const [password,setPassword] = useState('');
-  const router = useRouter();
 
-  const loginHandler = (e : React.FormEvent)=>{
+  const loginHandler = async(e : React.FormEvent)=>{
     e.preventDefault();
     setLoading(true);
-    // Get username and password from process.env and form and compare them
-    if(password === process.env.PASSWORD && userName === process.env.USER_NAME){
-      // sign username and password using jwt
-      // set that token on local storage
-      router.push('/admin')
+    const res = await loginAction(userName,password);
+    if(!res.isAuthenticated){
+      toast.error('Invalid username or password');
+      setLoading(false);
+      return;
     }
-    // toast message of 'Either userName or Password is incorrect'
-    router.push('/');
+    else{
+      localStorage.setItem('token',res.token as string);
+      redirect('/admin/notice');
+    }
   }
 
     return (

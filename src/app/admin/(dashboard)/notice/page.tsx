@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Pencil, Trash } from "lucide-react"
 import Image from "next/image"
+import ProtectedRoute from "@/components/ProtectedRoute"
 
 interface Notice {
   id: number
@@ -49,7 +50,11 @@ export default function NoticesPage() {
     setNotices(notices.filter((notice) => notice.id !== id))
   }
 
+  const token = localStorage.getItem('token');
+  console.log(token);
+
   return (
+    <ProtectedRoute token={token}>
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">Manage Notices</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -86,6 +91,7 @@ export default function NoticesPage() {
         </TableBody>
       </Table>
     </div>
+    </ProtectedRoute>
   )
 }
 

@@ -1,20 +1,11 @@
-'use client'
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
+import React from 'react'
 
-const page = () => {
-
-  const router = useRouter();
-
-    // get token from the localStorage
-    // jwt.verify the token 
-    
-    // if !verify router.push('/admin/login') toast message ('You currently don't have access to the admin page')
-    // else router.push('/admin/notice')
-
-
+const admin = () => {
+    redirect('/admin/login');
   return (
-    <div>admin page </div>
+    <div>admin</div>
   )
 }
 
-export default page
+export default admin
