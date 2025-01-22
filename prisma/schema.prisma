@@ -10,5 +10,32 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = env("DATABASE_URL")
+}
+
+model notice {
+  id        Int      @id @unique @default(autoincrement())
+  title     String
+  imageUrl  String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model image {
+  id        Int      @id @unique @default(autoincrement())
+  url       String
+  category  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model message {
+  id        Int      @id @unique @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import ProtectedRoute from "@/components/ProtectedRoute"
 
 interface Message {
   id: number
@@ -30,29 +31,31 @@ export default function MessagesPage() {
   ])
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Received Messages</h1>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Sender</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Message</TableHead>
-            <TableHead>Date</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {messages.map((message) => (
-            <TableRow key={message.id}>
-              <TableCell>{message.sender}</TableCell>
-              <TableCell>{message.email}</TableCell>
-              <TableCell>{message.content}</TableCell>
-              <TableCell>{message.date}</TableCell>
+    <ProtectedRoute>
+      <div className="space-y-6">
+        <h1 className="text-3xl font-bold">Received Messages</h1>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Sender</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Message</TableHead>
+              <TableHead>Date</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+          </TableHeader>
+          <TableBody>
+            {messages.map((message) => (
+              <TableRow key={message.id}>
+                <TableCell>{message.sender}</TableCell>
+                <TableCell>{message.email}</TableCell>
+                <TableCell>{message.content}</TableCell>
+                <TableCell>{message.date}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+    </ProtectedRoute>
   )
 }
 
