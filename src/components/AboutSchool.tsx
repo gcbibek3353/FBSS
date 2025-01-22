@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 
 const AboutSchool = () => {
+
     return (
         <div className="flex flex-col md:flex-row items-center justify-center md:gap-10 gap-5 p-5 md:p-10">
         <div className="w-full flex items-center justify-center">

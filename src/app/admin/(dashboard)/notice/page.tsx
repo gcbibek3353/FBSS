@@ -50,11 +50,10 @@ export default function NoticesPage() {
     setNotices(notices.filter((notice) => notice.id !== id))
   }
 
-  const token = localStorage.getItem('token');
-  console.log(token);
+
 
   return (
-    <ProtectedRoute token={token}>
+    <ProtectedRoute>
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">Manage Notices</h1>
       <form onSubmit={handleSubmit} className="space-y-4">

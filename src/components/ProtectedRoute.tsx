@@ -1,38 +1,44 @@
-import { redirect } from "next/navigation";
-import { toast } from "sonner";
-import jwt from 'jsonwebtoken';
+"use client";
 
-const JWT_SECRET = process.env.JWT_SECRET;
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import jwt from "jsonwebtoken";
 
 const ProtectedRoute = ({
-    children,token
-  }: Readonly<{
-    children: React.ReactNode,
-    token : string | null
-  }>) => {
-    let isVerified = false;
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [isVerified, setIsVerified] = useState(false); 
+  const router = useRouter();
 
-      try {
-          if(!token){
-            toast('You currently don\'t have access to the admin page');
-            redirect('/admin/login');
-          }
-          const verifiedAdmin = jwt.verify(token as string,JWT_SECRET as string);
-          if(verifiedAdmin){
-            isVerified = true;
-          }
-        } catch (error) {
-            toast('some error occured while verifying the token');
-          console.log(error);
-          redirect('/admin/login');
-        }
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
-  return (    
-    <>
-        {/* {children} */}
-        This is protected route 
-    </>
-  )
-}
+    if (!token) {
+      toast.message("You currently don't have access to the admin page");
+      router.push("/admin/login");
+      return;
+    }
 
-export default ProtectedRoute
+    try {
+      const decodedToken = jwt.decode(token); 
+      if (!decodedToken) throw new Error("Invalid token");
+      // We can also verify the token using an API endpoint or server action
+      setIsVerified(true);
+    } catch (error) {
+      toast.message("Some error occurred while verifying the token");
+      console.error(error);
+      router.push("/admin/login");
+    }
+  }, [router]);
+
+  if (!isVerified) {
+    return <div>This route is protected</div>; 
+  }
+
+  return <>{children}</>;
+};
+
+export default ProtectedRoute;
