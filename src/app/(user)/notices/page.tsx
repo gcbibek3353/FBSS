@@ -1,12 +1,18 @@
-import WrapperCard from '@/components/WrapperCard'
-import React from 'react'
+import { getAllNotices } from "@/actions/notice"
+import NoticesContent from "./noticeContent"
+import WrapperCard from "@/components/WrapperCard"
 
-const notice = () => {
+export default async function NoticesPage() {
+  const { success, notices } = await getAllNotices()
+
+  if (!success || !notices) {
+    return <div>Failed to load notices</div>
+  }
+
   return (
     <div>
       <WrapperCard title='notices' />
+      <NoticesContent notices={notices} />
     </div>
   )
 }
-
-export default notice

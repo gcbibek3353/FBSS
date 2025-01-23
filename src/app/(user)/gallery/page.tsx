@@ -1,8 +1,12 @@
+import WrapperCard from '@/components/WrapperCard'
 import React from 'react'
 
 const gallery = () => {
   return (
-    <div>gallery</div>
+    <div>
+         <WrapperCard title='gallery' />
+         gallery
+    </div>
   )
 }
 

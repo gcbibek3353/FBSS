@@ -7,10 +7,15 @@ const dashboard = ({
   }>) => {
 
   return (
-    <div className='flex gap-10 items-center'>
-        <Sidebar />
-        {children}
-    </div>
+<div className="flex h-screen">
+  <div className="w-1/4 h-screen">
+    <Sidebar />
+  </div>
+  <div className="flex-1 flex justify-center items-center bg-white">
+    {children}
+  </div>
+</div>
+
   )
 }
 
