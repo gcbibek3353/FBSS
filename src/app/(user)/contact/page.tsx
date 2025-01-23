@@ -1,11 +1,42 @@
+'use client'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
 import WrapperCard from "@/components/WrapperCard"
+import { useState } from "react"
+import { addMessage } from "@/actions/message"
+import { toast } from "sonner"
 
 export default function ContactPage() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const res = await addMessage({ firstName, lastName, email, message });
+      if (res.success) {
+        toast.success(res.message);
+      } else {
+        toast.error(res.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setMessage("");
+  };
+  
+
   return (
     <div>
       <WrapperCard title='contact' />
@@ -53,35 +84,35 @@ export default function ContactPage() {
               <CardTitle>Send us a Message</CardTitle>
             </CardHeader>
             <CardContent>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={submitHandler}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
                       First Name
                     </label>
-                    <Input id="firstName" placeholder="" />
+                    <Input id="firstName" value={firstName} onChange={(e)=>setFirstName(e.target.value)} placeholder="" />
                   </div>
                   <div>
                     <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
                       Last Name
                     </label>
-                    <Input id="lastName" placeholder="" />
+                    <Input id="lastName" value={lastName} onChange={(e)=>setLastName(e.target.value)} placeholder="" />
                   </div>
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                     Email
                   </label>
-                  <Input id="email" type="email" placeholder="" />
+                  <Input id="email" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="" />
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                     Message
                   </label>
-                  <Textarea id="message" placeholder="Your message here..." className="h-40" />
+                  <Textarea id="message" placeholder="Your message here..."  value={message} onChange={(e)=>setMessage(e.target.value)} className="h-40" />
                 </div>
                 <Button type="submit" className="w-full bg-blue-600">
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </CardContent>

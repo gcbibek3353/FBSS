@@ -1,34 +1,39 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import ProtectedRoute from "@/components/ProtectedRoute"
+import { getAllMessages } from "@/actions/message"
+import { toast } from "sonner"
 
 interface Message {
   id: number
-  sender: string
+  firstName: string
+  lastName : string
   email: string
-  content: string
-  date: string
+  message: string
+  createdAt: Date
+  updatedAt: Date
 }
 
 export default function MessagesPage() {
-  const [messages] = useState<Message[]>([
-    {
-      id: 1,
-      sender: "John Doe",
-      email: "john@example.com",
-      content: "Regarding the upcoming school event...",
-      date: "2023-05-15",
-    },
-    {
-      id: 2,
-      sender: "Jane Smith",
-      email: "jane@example.com",
-      content: "Question about the new curriculum...",
-      date: "2023-05-14",
-    },
-  ])
+  const [messages,setMessages] = useState<Message[]>([])
+
+  const fetchMessages = async () => {
+    try {
+      const res = await getAllMessages();
+      if (res.success && res.messages)
+        setMessages(res.messages);
+      else return toast.message(res.message);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchMessages();
+  },[]);
+
 
   return (
     <ProtectedRoute>
@@ -46,10 +51,10 @@ export default function MessagesPage() {
           <TableBody>
             {messages.map((message) => (
               <TableRow key={message.id}>
-                <TableCell>{message.sender}</TableCell>
+                <TableCell>{`${message.firstName} ${message.lastName}`}</TableCell>
                 <TableCell>{message.email}</TableCell>
-                <TableCell>{message.content}</TableCell>
-                <TableCell>{message.date}</TableCell>
+                <TableCell>{message.message}</TableCell>
+                <TableCell>{`${message.createdAt.toLocaleDateString()} `}</TableCell>
               </TableRow>
             ))}
           </TableBody>

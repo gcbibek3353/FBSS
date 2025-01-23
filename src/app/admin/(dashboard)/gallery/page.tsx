@@ -7,6 +7,7 @@ import { Trash } from "lucide-react"
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
 import ProtectedRoute from "@/components/ProtectedRoute"
@@ -25,6 +26,7 @@ export default function GalleryPage() {
   const [newPhotoCategory, setNewPhotoCategory] = useState("")
   const [currentCategory, setCurrentCategory] = useState("All")
   const [isLoading, setIsLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
 
   const fetchImages = async () => {
@@ -133,22 +135,36 @@ export default function GalleryPage() {
               <div className="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded">
                 {photo.category}
               </div>
-              <Button
-                variant="destructive"
-                size="icon"
-                className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                onClick={() => handleDeletePhoto(photo.id)}
-              >
-                <Trash className="h-4 w-4" />
-                {/* <Dialog>
-                  <DialogTrigger asChild>
-                <Trash className="h-4 w-4" />
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-[425px]">
-                    hello hello 
-                  </DialogContent>
-                </Dialog> */}
-              </Button>
+
+              <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="destructive"
+                    size="icon"
+                    className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <Trash className="h-4 w-4" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogTitle>Delete Image</DialogTitle>
+                  <p className="mt-2 text-sm text-gray-600">
+                    Are you sure you want to delete this image? This action cannot be undone.
+                  </p>
+                  <div className="mt-4 flex justify-end space-x-2">
+                    <Button variant="outline"  onClick={() => setIsOpen(false)}>
+                      Cancel
+                    </Button>
+                    <Button
+                      variant="destructive"
+                      onClick={() => handleDeletePhoto(photo.id)}
+                    >
+                      Yes, Delete
+                    </Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
+
             </div>
           ))}
         </div>
