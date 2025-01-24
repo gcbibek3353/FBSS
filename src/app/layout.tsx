@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Future Brighter Secondary School",
-  description: "FBSS is the best school in the world",
+  description: "Empowering students with knowledge, character, and a brighter future.",
 };
 
 export default function RootLayout({

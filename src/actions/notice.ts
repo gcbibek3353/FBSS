@@ -28,7 +28,11 @@ export const addNotice = async(notice: {title:string,imageUrl:string,content:str
 
 export const getAllNotices = async() => {
     try {
-        const res = await prisma.notice.findMany();
+        const res = await prisma.notice.findMany({
+            orderBy: {
+              createdAt: 'desc', // Sort by createdAt in descending order
+            },
+          });
         if(!res) return{
             success : false,
             message : "Failed to fetch notices from database"
@@ -96,3 +100,33 @@ export const updateNotice = async(id:number,notice: {title:string,imageUrl:strin
         }
     }
 }
+
+export const getLatestNotices = async () => {
+    try {
+      const res = await prisma.notice.findMany({
+        orderBy: {
+          createdAt: 'desc', // Sort by createdAt in descending order
+        },
+        take: 3, // Limit the result to 3 notices
+      });
+  
+      if (!res || res.length === 0) {
+        return {
+          success: false,
+          message: "Failed to fetch latest notices",
+        };
+      }
+  
+      return {
+        success: true,
+        notices: res, // Return the array of 3 notices
+      };
+    } catch (error) {
+      console.log(error);
+      return {
+        success: false,
+        message: "Error in fetching latest notices",
+      };
+    }
+  };
+  

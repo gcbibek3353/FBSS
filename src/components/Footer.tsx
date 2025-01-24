@@ -54,19 +54,19 @@ const Footer = () => {
                         <h2 className="text-xl font-semibold mb-4">Contact Information</h2>
                         <ul className="space-y-2">
                             <li>
-                                <button  className="flex items-center space-x-2" onClick={() => window.open('tel:9876543210')}>
+                                <button  className="flex items-center hover:underline space-x-2" onClick={() => window.open('tel:9876543210')}>
                                     <PhoneCall size={18} />
                                     <span>{phoneNumber}</span>
                                 </button>
                             </li>
                             <li>
-                                <button className="flex items-center space-x-2" onClick={() => window.open(`mailto:${email}`)}>
+                                <button className="flex items-center hover:underline space-x-2" onClick={() => window.open(`mailto:${email}`)}>
                                     <Mail size={18} />
                                     <span>{email}</span>
                                 </button>
                             </li>
                             <li >
-                                <button className="flex items-center space-x-2" onClick={() => window.open(
+                                <button className="flex items-center hover:underline space-x-2" onClick={() => window.open(
                                     `https://www.google.com/maps/search/?api=1&query=${coordinates}`,
                                     '_blank'
                                 )}>

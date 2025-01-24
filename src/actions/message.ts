@@ -32,7 +32,11 @@ export const addMessage = async (message: Message) => {
 
 export const getAllMessages = async () => {
     try {
-        const res = await prisma.message.findMany();
+        const res = await prisma.message.findMany({
+            orderBy: {
+              createdAt: 'desc', // Sort by createdAt in descending order
+            },
+          });
         if (!res) return {
             success: false,
             message: "Failed to fetch messages from database"

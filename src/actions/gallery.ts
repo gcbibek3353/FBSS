@@ -28,7 +28,11 @@ export const addPhoto = async(photo: {url:string,category:string}) => {
 
 export const getAllPhotos = async() => {
     try {
-        const res = await prisma.image.findMany();
+        const res = await prisma.image.findMany({
+            orderBy: {
+              createdAt: 'desc', // Sort by createdAt in descending order
+            },
+          });
         if(!res) return{
             success : false,
             message : "Failed to fetch photos from database"

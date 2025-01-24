@@ -20,10 +20,6 @@ interface Notice {
 
 export default function NoticesPage() {
   const [isLoading, setIsLoading] = useState(false);
-  // const [notices, setNotices] = useState<Notice[]>([
-  //   { id: 1, title: "School Closure", imageUrl: "/assets/images/image.png", content: "School will be closed on Monday due to maintenance." },
-  //   { id: 2, title: "Parent-Teacher Meeting", imageUrl: "/assets/images/image.png", content: "Parent-Teacher meeting scheduled for next Friday." },
-  // ])
   const [notices, setNotices] = useState<Notice[]>([]);
 
   const [title, setTitle] = useState("")
@@ -102,7 +98,7 @@ export default function NoticesPage() {
 
   return (
     <ProtectedRoute>
-      <div className="space-y-6">
+      <div className="space-y-6 mr-6">
         <h1 className="text-3xl font-bold">Manage Notices</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input placeholder="Notice Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
@@ -122,7 +118,7 @@ export default function NoticesPage() {
           <TableBody>
             {notices.map((notice) => (
               <TableRow key={notice.id}>
-                <TableCell><Image src={notice.imageUrl} alt={notice.title} height={20} width={20} /></TableCell>
+                <TableCell><Image src={notice.imageUrl} alt={notice.title} height={75} width={75} /></TableCell>
                 <TableCell>{notice.title}</TableCell>
                 <TableCell>{notice.content}</TableCell>
                 <TableCell>
