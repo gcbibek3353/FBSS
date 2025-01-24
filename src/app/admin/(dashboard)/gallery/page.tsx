@@ -13,6 +13,7 @@ import {
 import ProtectedRoute from "@/components/ProtectedRoute"
 import { addPhoto, deletePhoto, getAllPhotos } from "@/actions/gallery"
 import { toast } from "sonner"
+import Image from "next/image"
 
 interface Photo {
   id: number
@@ -127,9 +128,11 @@ export default function GalleryPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredPhotos.map((photo) => (
             <div key={photo.id} className="relative group">
-              <img
+              <Image
                 src={photo.url || "/placeholder.svg"}
                 alt={`Gallery item - ${photo.category}`}
+                width={600}
+                height={600}
                 className="w-full h-48 object-cover rounded-lg"
               />
               <div className="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded">

@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { toast } from 'sonner';
 import loginAction from '@/actions/auth';
 
-const page = () => {
+const Login = () => {
   const [loading,setLoading] = useState(false);
   const [userName,setUserName] = useState('');
   const [password,setPassword] = useState('');
@@ -75,4 +75,4 @@ const page = () => {
       );
 }
 
-export default page
+export default Login

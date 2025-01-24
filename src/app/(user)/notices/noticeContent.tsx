@@ -8,7 +8,7 @@ interface NoticesContentProps {
 }
 
 interface Notice {
-  id: Number
+  id: number
   title: string
   content: string
   imageUrl?: string

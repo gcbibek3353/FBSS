@@ -1,4 +1,4 @@
-import { Bus, Computer, ComputerIcon, FlaskConicalIcon, Laptop, LibraryBig, Volleyball } from 'lucide-react'
+import { Bus,FlaskConicalIcon, Laptop, LibraryBig, Volleyball } from 'lucide-react'
 import React from 'react'
 
 const Facilities = () => {
