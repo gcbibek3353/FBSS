@@ -1,5 +1,5 @@
 'use client'
-import { Mail, MapPin, PhoneCall } from 'lucide-react'
+import { FacebookIcon, Instagram, Mail, MapPin, PhoneCall } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -16,6 +16,7 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Logo and School Name */}
                     <div className="flex items-center">
+                        <div>
                         <Link href='/' className='flex items-center space-x-4'>
                         <Image
                             src="/assets/images/logo.jpeg"
@@ -28,6 +29,11 @@ const Footer = () => {
                             Future Brighter <br /> Secondary School
                         </p>
                             </Link>
+                            <div className='flex items-center justify-center gap-5 mt-5'>
+                                <Link className='bg-white text-black hover:text-blue-600 p-3 rounded-full' href='https://www.facebook.com/FuterBrighterbaglung/'><FacebookIcon /></Link>
+                                <Link className='bg-white text-black hover:text-red-600 p-3 rounded-full' href='https://www.instagram.com/explore/locations/398030506934856/future-brighter-secondary-school-baglung/?next=%2Facharlesnyc%2Ftagged%2F'><Instagram /></Link>
+                            </div>
+                            </div>
                     </div>
 
                     {/* Quick Links */}

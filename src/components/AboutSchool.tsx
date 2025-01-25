@@ -1,18 +1,24 @@
+'use client'
 import Image from 'next/image'
 import React from 'react'
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(useGSAP);
 
 const AboutSchool = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
       <div className=" p-4 m-4 md:p-6 md:m-6 rounded-lg">
-        <h2 className="md:text-4xl text-3xl font-bold mb-4">
-          Alumni Achievers: Shaping the Future
+        <h2 id='heading' className="md:text-4xl text-3xl font-bold mb-4">
+          Our School 
         </h2>
       </div>
       <div className='flex flex-col md:flex-row items-center justify-center md:gap-10 gap-5 p-5 md:p-10'>
         <div className="w-full flex items-center justify-center">
           <Image
+          id='img'
             src="/assets/images/school.jpg"
             alt="About School"
             width={600}
@@ -20,7 +26,7 @@ const AboutSchool = () => {
             className="rounded-lg shadow-lg"
           />
         </div>
-        <div className="w-full text-gray-800">
+        <div id='text' className="w-full text-gray-800">
           <p className="text-lg md:text-xl leading-relaxed">
             Located in the heart of Baglung, our institution has been a beacon of learning, innovation, and character building for students in the region. Established with the vision of nurturing young minds and preparing them for a brighter future, we pride ourselves on providing a holistic education that goes beyond academics.
           </p>
