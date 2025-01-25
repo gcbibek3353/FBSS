@@ -6,9 +6,9 @@ const MessageFromPrincipal = () => {
         <div className='flex flex-col max-w-7xl my-8 mx-auto px-4 py-8 bg-white'>
       
           {/* Principal Message Section */}
-          <h2 className='text-3xl font-bold mb-8'>Message From Principal</h2>
+          <h2 className='text-4xl font-bold mb-8'>Message From Principal</h2>
           
-          <div className='grid lg:grid-cols-[600px_1fr] gap-8'>
+          <div className='grid lg:grid-cols-[600px_1fr] gap-8 md:gap-16'>
             {/* Principal Image */}
             <div className='w-full'>
               <Image
@@ -22,7 +22,7 @@ const MessageFromPrincipal = () => {
       
             {/* Message Content */}
             <div className='space-y-6 text-gray-700 leading-relaxed'>
-              <p className='font-medium'>Dear Parents, Guardians, and Students,</p>
+              <p className='font-medium md:text-xl'>Dear Parents, Guardians, and Students,</p>
               <p>Warm greetings from Future Brighter Secondary School!</p>
       
               <p>As the principal of this esteemed institution, I am filled with pride to witness the 

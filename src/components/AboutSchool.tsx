@@ -3,8 +3,14 @@ import React from 'react'
 
 const AboutSchool = () => {
 
-    return (
-        <div className="flex flex-col md:flex-row items-center justify-center md:gap-10 gap-5 p-5 md:p-10">
+  return (
+    <div className="flex flex-col items-center justify-center">
+      <div className=" p-4 m-4 md:p-6 md:m-6 rounded-lg">
+        <h2 className="md:text-4xl text-3xl font-bold mb-4">
+          Alumni Achievers: Shaping the Future
+        </h2>
+      </div>
+      <div className='flex flex-col md:flex-row items-center justify-center md:gap-10 gap-5 p-5 md:p-10'>
         <div className="w-full flex items-center justify-center">
           <Image
             src="/assets/images/school.jpg"
@@ -37,8 +43,9 @@ const AboutSchool = () => {
           </p>
         </div>
       </div>
-      
-    )
+    </div>
+
+  )
 }
 
 export default AboutSchool

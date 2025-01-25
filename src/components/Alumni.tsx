@@ -67,7 +67,16 @@ const Alumni = () => {
 
 
   return (
-    <div className="w-screen bg-white flex items-center justify-center p-4 sm:p-6 lg:p-8">
+    <div className="w-screen bg-white flex flex-col gap-8 items-center justify-center p-4 sm:p-6 lg:p-8">
+     <div className="p-6 rounded-lg">
+  <h2 className="text-4xl font-bold text-center mb-4">
+    Alumni Achievers: Shaping the Future
+  </h2>
+  <p className="text-gray-600 leading-relaxed">
+    Explore the inspiring journeys of our alumni who have excelled in diverse fields worldwide. Stay connected, celebrate achievements, and join a network that continues to make a difference. This is your space to reconnect and inspire!
+  </p>
+</div>
+
     <div className="w-full max-w-screen-xl">
       <Carousel
         opts={{

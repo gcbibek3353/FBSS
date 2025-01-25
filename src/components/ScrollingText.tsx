@@ -20,7 +20,7 @@ const ScrollingText = async () => {
                     <Newspaper className="w-5 h-5" />
                     NOTICES
                 </button>
-                <div className='overflow-hidden flex-1'>
+                <div className='overflow-hidden flex-1 flex items-center justify-center'>
                     <div className='animate-marquee whitespace-nowrap'>
                         <div className='flex items-center justify-center text-white min-h-full text-lg'> 
                             {
