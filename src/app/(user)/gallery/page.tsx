@@ -1,3 +1,4 @@
+export const revalidate = 60;
 import WrapperCard from '@/components/WrapperCard'
 
 import {getAllPhotos} from "@/actions/gallery"
