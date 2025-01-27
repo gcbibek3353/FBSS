@@ -27,7 +27,7 @@ export const Navbar = () => {
     
                     {/* Desktop Navigation */}
                     <div className='hidden md:flex items-center justify-center'>
-                        <ul className='flex gap-8 text-base font-semibold'>
+                        <ul className='flex gap-14 text-base font-semibold'>
                             <Link href='/' className={`${pathname === '/' ? 'text-white border-b-2 border-white' : 'text-white'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-white hover:-translate-y-2 hover:border-white`}>Home</Link>
                             <Link href='/about' className={`${pathname === '/about' ? 'text-white border-b-2 border-white' : 'text-white'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-white hover:-translate-y-2 hover:border-white`}>About Us</Link>
                             <Link href='/notices' className={`${pathname === '/notices' ? 'text-white border-b-2 border-white' : 'text-white'} transition-all duration-200 cursor-pointer px-3 py-2 hover:text-white hover:-translate-y-2 hover:border-white`}>Notices</Link>

@@ -67,7 +67,7 @@ const Alumni = () => {
 
 
   return (
-    <div className="w-screen bg-white flex flex-col gap-8 items-center justify-center p-4 sm:p-6 lg:p-8">
+    <div className="w-full overflow-x-hidden bg-white flex flex-col gap-8 items-center justify-center sm:p-6 lg:p-8">
       <div className="p-6 rounded-lg">
         <h2 className="text-4xl font-bold text-center mb-4">
           Alumni Achievers: Shaping the Future
@@ -129,7 +129,6 @@ const Alumni = () => {
         </Carousel>
       </div>
     </div>
-
   )
 };
 
